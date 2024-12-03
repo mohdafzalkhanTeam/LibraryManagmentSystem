@@ -138,7 +138,8 @@ public class MainScreen extends javax.swing.JFrame {
 
                 }
                 catch(Exception e){
-                    JOpitonPane.showDialogMessage(null,e);
+                    JOptionPane.showMessageDialog(null,e);
+                    
                 }
     }
 
