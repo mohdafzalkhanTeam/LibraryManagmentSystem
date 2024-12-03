@@ -243,16 +243,28 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField2FocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            Connection con = ConnectionProvider.getCon();
+       EmailValidator ev = new EmailValidator();
+        Connection con = ConnectionProvider.getCon();
             String name = jTextField1.getText();
             String email = jTextField2.getText();
             String contact = jTextField3.getText();
             String password = new String (jPasswordField1.getPassword());
-            PreparedStatement ps = con.prepareStatement("insert into Libuser values (?,?,?,?)");
+            if(!ev.isValidEmail(email)){
+                JOptionPane.showMessageDialog(null,"Give proper email id.");
+            }
+        try{
+           
+            PreparedStatement ps = con.prepareStatement("insert into Libusers values (?,?,?,?)");
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, contact);
+            ps.setString(4, password);
+            ps.executeQuery();
             JOptionPane.showMessageDialog(null, "Account Created Successfully.");
-        }catch(Exception e){
-
+            con.close();
+            setVisible(false);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,e);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
