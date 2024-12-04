@@ -14,7 +14,7 @@ public class addStudent extends javax.swing.JFrame {
      */
     public addStudent() {
         initComponents();
-    }
+    }                               
 
     /**
      * This method is called from within the constructor to initialize the form.
