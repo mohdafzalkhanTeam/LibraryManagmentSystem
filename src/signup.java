@@ -253,7 +253,6 @@ public class signup extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Give proper email id.");
             }
         try{
-           
             PreparedStatement ps = con.prepareStatement("insert into Libusers values (?,?,?,?)");
             ps.setString(1, name);
             ps.setString(2, email);
