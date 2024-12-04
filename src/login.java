@@ -88,6 +88,11 @@ public class login extends javax.swing.JFrame {
                 jPasswordField1FocusLost(evt);
             }
         });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 129, -1));
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -139,9 +144,10 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageIcon/bg.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 360));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -192,12 +198,12 @@ public class login extends javax.swing.JFrame {
             char[] pass = jPasswordField1.getPassword();
             String password = new String(pass);
             System.out.println(username + " " + password);
-            String q = "Select * from libusers where username=?";
+            String q = "Select * from libusers where email=?";
             PreparedStatement ps = con.prepareStatement(q);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String storeduser = rs.getString("email");
+                String storeduser = rs.getString("name");
                 String storedPass = rs.getString("Password");
                 System.out.println("Stored" + storeduser + " " + storedPass);
                 if (password.equals(storedPass)) {
@@ -231,6 +237,11 @@ setVisible(false);
 new signup().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
