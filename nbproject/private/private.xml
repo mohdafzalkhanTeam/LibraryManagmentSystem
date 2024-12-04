@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Manoj/Documents/GitHub/LibraryManagmentSystem/src/Home.java</file>
-            <file>file:/C:/Users/Manoj/Documents/GitHub/LibraryManagmentSystem/src/addBook.java</file>
-            <file>file:/C:/Users/Manoj/Documents/GitHub/LibraryManagmentSystem/src/signup.java</file>
-            <file>file:/C:/Users/Manoj/Documents/GitHub/LibraryManagmentSystem/src/BookDetails.java</file>
-=======
-            <file>file:/C:/Users/moham/OneDrive/Documents/NetBeansProjects/LibraryManagmentSystem/src/LibPackage/PasswordHashing.java</file>
->>>>>>> 695e0c4d2009b4883074c3fa6e587bef90e14664
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/MainScreen.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/addStudent.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/signup.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/librarymanagmentsystem/LibraryManagmentSystem.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/Home.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/ViewStudentList.java</file>
+            <file>file:/Users/jankisharan/Documents/GitHub/LibraryManagmentSystem/src/login.java</file>
         </group>
     </open-files>
 </project-private>
