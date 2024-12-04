@@ -42,7 +42,7 @@ public class addBook extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Sl Num");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("  AddingBook");
@@ -50,11 +50,11 @@ public class addBook extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("BookName");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 90, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 90, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("AuthorName");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         jButton1.setText("RESET");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
@@ -76,13 +76,13 @@ public class addBook extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 140, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 140, -1));
 
         jTextField2.setText("BookName");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 141, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 141, -1));
 
         jTextField3.setText("AuthorName");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 141, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 141, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageIcon/bag1.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -40, 480, 360));
