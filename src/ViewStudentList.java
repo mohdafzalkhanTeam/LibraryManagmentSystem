@@ -6,6 +6,7 @@ import LibPackage.*;
 import java.sql.*;
 import javax.swing.*;
 import net.proteanit.sql.*;
+
 /**
  *
  * @author jankisharan
@@ -122,29 +123,27 @@ public class ViewStudentList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-try{
-    Connection con = ConnectionProvider.getCon();
-    PreparedStatement ps = con.prepareStatement("Select * from LibStudent");
-    ResultSet rs = ps.executeQuery();
-    StudentTable.setModel(DbUtils.resultSetToTableModel(rs));
-}catch(SQLException e){
-    
-}
+        try {
+            Connection con = ConnectionProvider.getCon();
+            PreparedStatement ps = con.prepareStatement("Select * from LibStudent");
+            ResultSet rs = ps.executeQuery();
+            StudentTable.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException e) {
+
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentShown
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-setVisible(false);        // TODO add your handling code here:
+        setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    try{
-        StudentTable.print(JTable.PrintMode.NORMAL);
-    }catch(Exception e)
-    {
-        JOptionPane.showMessageDialog(null,e);
-    }
-
+        try {
+            StudentTable.print(JTable.PrintMode.NORMAL);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

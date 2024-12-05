@@ -237,7 +237,7 @@ public class IssueBook extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
+                .addContainerGap(157, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -290,7 +290,7 @@ public class IssueBook extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 560));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 560));
 
         pack();
         setLocationRelativeTo(null);
@@ -423,25 +423,25 @@ public class IssueBook extends javax.swing.JFrame {
         try {
             Connection con = ConnectionProvider.getCon();
             PreparedStatement ps1 = con.prepareStatement("Select status from LibBooks where serial=? and status='Y'");
-            ps1.setString(1,jTextField6.getText());
+            ps1.setString(1, jTextField6.getText());
             ResultSet rs = ps1.executeQuery();
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null,"This Book is already Issued.");
-            }else{
-            PreparedStatement ps = con.prepareStatement("Insert into Libissuebook values (?,?,?,?,?)");
-            PreparedStatement pss = con.prepareStatement("Update Libbooks set status=? where serial=?");
-            ps.setString(1, jTextField1.getText());
-            ps.setString(2, jTextField6.getText());
-            ps.setDate(3, java.sql.Date.valueOf(currentDate));
-            ps.setDate(4, java.sql.Date.valueOf(returnDate));
-            ps.setString(5,"Y");
-            pss.setString(1,"Y");
-            pss.setString(2,jTextField6.getText());
-            ps.executeQuery();
-            pss.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Book Issued.");
-            setVisible(false);
-            new IssueBook().setVisible(true);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "This Book is already Issued.");
+            } else {
+                PreparedStatement ps = con.prepareStatement("Insert into Libissuebook values (?,?,?,?,?)");
+                PreparedStatement pss = con.prepareStatement("Update Libbooks set status=? where serial=?");
+                ps.setString(1, jTextField1.getText());
+                ps.setString(2, jTextField6.getText());
+                ps.setDate(3, java.sql.Date.valueOf(currentDate));
+                ps.setDate(4, java.sql.Date.valueOf(returnDate));
+                ps.setString(5, "YES");
+                pss.setString(1, "YES");
+                pss.setString(2, jTextField6.getText());
+                ps.executeQuery();
+                pss.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Book Issued.");
+                setVisible(false);
+                new IssueBook().setVisible(true);
             }
 
         } catch (SQLException e) {

@@ -207,7 +207,8 @@ public class login extends javax.swing.JFrame {
                 String storedPass = rs.getString("Password");
                 System.out.println("Stored" + storeduser + " " + storedPass);
                 if (password.equals(storedPass)) {
-                    JOptionPane.showMessageDialog(null, "Login Success");
+//                    JOptionPane.showMessageDialog(null, "Login Success");
+new Home().setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Username/Password does not exist.");
