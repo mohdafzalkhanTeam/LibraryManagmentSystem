@@ -106,10 +106,11 @@ public class addBook extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("insert into LibBooks values (?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into LibBooks values (?,?,?,?)");
             ps.setString(1,jTextField1.getText());
             ps.setString(2,jTextField2.getText());
             ps.setString(3, jTextField3.getText());
+            ps.setString(4, "N");
             ps.executeQuery();
             JOptionPane.showMessageDialog(null,"Book Details feeded successfully.");
             setVisible(false);

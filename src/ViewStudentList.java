@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import LibPackage.*;
+import java.sql.*;
+import javax.swing.*;
+import net.proteanit.sql.*;
 /**
  *
  * @author jankisharan
@@ -31,7 +34,7 @@ public class ViewStudentList extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        StudentTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -58,6 +61,11 @@ public class ViewStudentList extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(102, 255, 255));
@@ -67,14 +75,25 @@ public class ViewStudentList extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 255, 0));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButton1.setText("PRINT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 800, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButton2.setText("CLOSE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 820, -1, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        StudentTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -85,7 +104,10 @@ public class ViewStudentList extends javax.swing.JFrame {
                 "NAME", "SRN", "DEPARTMENT"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        StudentTable.setAlignmentX(1.0F);
+        StudentTable.setAlignmentY(1.0F);
+        StudentTable.setAutoscrolls(false);
+        jScrollPane1.setViewportView(StudentTable);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 1020, 650));
 
@@ -98,6 +120,34 @@ public class ViewStudentList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+try{
+    Connection con = ConnectionProvider.getCon();
+    PreparedStatement ps = con.prepareStatement("Select * from LibStudent");
+    ResultSet rs = ps.executeQuery();
+    StudentTable.setModel(DbUtils.resultSetToTableModel(rs));
+}catch(SQLException e){
+    
+}
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try{
+        StudentTable.print(JTable.PrintMode.NORMAL);
+    }catch(Exception e)
+    {
+        JOptionPane.showMessageDialog(null,e);
+    }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +185,7 @@ public class ViewStudentList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable StudentTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
@@ -143,6 +194,5 @@ public class ViewStudentList extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
