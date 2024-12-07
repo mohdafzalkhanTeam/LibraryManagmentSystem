@@ -45,6 +45,7 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 3, 24)); // NOI18N
@@ -124,6 +125,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(248, 6, 22));
         jButton3.setText("Close");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,12 +210,13 @@ public class login extends javax.swing.JFrame {
                 System.out.println("Stored" + storeduser + " " + storedPass);
                 if (password.equals(storedPass)) {
 //                    JOptionPane.showMessageDialog(null, "Login Success");
+setVisible(false);
 new Home().setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Username/Password does not exist.");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e);
         }
         // TODO add your handling code here:
