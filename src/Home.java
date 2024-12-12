@@ -3,11 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import LibPackage.*;
+import java.time.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.*;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 import net.proteanit.sql.DbUtils;
 
 
@@ -42,9 +47,11 @@ public class Home extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         ViewIssueList = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,6 +195,12 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 890, 160, 50));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel3.setText("BOOK ISSUED LIST");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 170, -1, -1));
+
         ViewIssueList.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ViewIssueList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -202,13 +215,21 @@ public class Home extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ViewIssueList);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 910, 600));
+        jScrollPane2.setViewportView(jScrollPane1);
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 102));
-        jLabel3.setText("BOOK ISSUED LIST");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 170, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 250, 1220, 580));
+
+        jButton9.setBackground(new java.awt.Color(0, 255, 51));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Refresh");
+        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImageIcon/baground1.jpg"))); // NOI18N
@@ -263,14 +284,39 @@ new BookReturning().setVisible(true);        // TODO add your handling code here
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
  try {
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("Select * from LibissueBook");
+            PreparedStatement ps = con.prepareStatement("Select * from LibissueBook",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = ps.executeQuery();
+//            ResultSetMetaData rsMeta = rs.getMetaData();
+//            int col =  rsMeta.getColumnCount();
+//            Date date=null;
+//          while (rs.next()) {
+//                for (int i = 1; i <= col; i++) {
+//                    if (rsMeta.getColumnType(i) == Types.DATE || rsMeta.getColumnType(i) == Types.TIMESTAMP) {
+//                        date = rs.getDate(i);
+//                        
+//                        if (date != null) {
+//                            // Format the date to only include the date part
+//                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                            String formattedDate = dateFormat.format(date);
+//                            
+//                            // Update the ResultSet with the formatted date
+//                            rs.updateString(i, formattedDate);
+//                        }
+//                    }
+//                }
+//                rs.updateRow();  // Commit changes for the current row
+//            }
             ViewIssueList.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentShown
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+setVisible(false);
+new Home().setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,9 +363,11 @@ new BookReturning().setVisible(true);        // TODO add your handling code here
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

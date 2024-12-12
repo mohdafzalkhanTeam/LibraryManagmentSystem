@@ -96,6 +96,7 @@ public class ViewIssueList extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentShown
 
